@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Login from '../auth/Login';
 
 const renderAuthLinks = isLoggedIn => {
@@ -37,4 +38,9 @@ const Navigation = ({ isLoggedIn }) => {
       );
 }
 
-export default Navigation;
+const mapStateToProps = ({ auth }) => {
+  return {
+    isLoggedIn: auth.isLoggedIn
+  };
+};
+export default connect(mapStateToProps)(Navigation);

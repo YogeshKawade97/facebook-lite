@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-// import { View } from 'react-native';
-// import { LoginButton } from 'react-native-fbsdk';
+import { connect } from 'react-redux';
+import queryString from 'query-string';
 import FacebookLogin from 'react-facebook-login';
+import { LoginUser } from '../../actions/authAction';
 
 class Login extends Component {
 
@@ -9,7 +10,7 @@ class Login extends Component {
         super();
         this.state = { 
             isAuthenticated: false, 
-            user: null, 
+            user: null,
             token: ''
         };
     }
@@ -19,26 +20,21 @@ class Login extends Component {
     };
 
     responseFacebook = (response) => {
-        console.log(response);
-        
+        console.log(this.props);
+        const queryParams = queryString.parse(this.props.location.search);
+
         if(response.accessToken) {
             this.setState({isAuthenticated: true, user: {name: response.name, email: response.email}, token: response.accessToken})
         }
-        // const tokenBlob = new Blob([JSON.stringify({access_token: response.accessToken}, null, 2)], {type : 'application/json'});
-        // const options = {
-        //     method: 'POST',
-        //     body: tokenBlob,
-        //     mode: 'cors',
-        //     cache: 'default'
-        // };
-        // fetch('http://localhost:4000/api/v1/auth/facebook', options).then(r => {
-        //     const token = r.headers.get('x-auth-token');
-        //     r.json().then(user => {
-        //         if (token) {
-        //             this.setState({isAuthenticated: true, user, token})
-        //         }
-        //     });
-        // })
+
+        this.props.LoginUser(this.state.user, this.state.token, () => {
+            if (queryParams.redirectTo) {
+              this.props.history.push(queryParams.redirectTo);
+            } else {
+              this.props.history.push('/');
+            }
+        });
+        
     }
 
     render() {
@@ -79,4 +75,7 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default connect(
+    null,
+    { LoginUser }
+  )(Login);

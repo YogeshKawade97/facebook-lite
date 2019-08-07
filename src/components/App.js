@@ -6,18 +6,19 @@ import ProfileComponent from './profile/ProfileComponent';
 import AlbumSearch from './album/AlbumSearch';
 import AlbumDetails from './album/AlbumDetails';
 import Login from './auth/Login';
+import withAuth from './withAuth'
 
 function App() {
   return (
-    <div className="App">
+    <div className="ui container">
       <BrowserRouter>
         <Navigation />
         <Switch>
           <Route exact path="/" component={HomeComponent} />
-          <Route path="/profile" component={ProfileComponent} />
-          <Route exact path="/album" component={AlbumSearch} />
+          <Route path="/profile" component={withAuth(ProfileComponent)} />
+          <Route exact path="/album" component={withAuth(AlbumSearch)} />
           <Route exact path="/login" component={Login} />
-          <Route path="/album/:id" component={AlbumDetails} />
+          <Route path="/album/:id" component={withAuth(AlbumDetails)} />
         </Switch>
       </BrowserRouter>  
     </div>
