@@ -13,6 +13,12 @@ class SearchBar extends Component {
         this.props.onSearchSubmitted(this.state.searchTerm);
     };
 
+    handleChange = e => {
+        this.setState({
+            searchTerm: e.target.value
+        })
+    }
+
     render() {
         return (
             <div className="ui form">
@@ -20,9 +26,9 @@ class SearchBar extends Component {
                 <div className="field">
                     <label>Search: </label>
                     <input
-                    value={this.state.searchTerm}
-                    onChange={this.handleChange}
-                    type="text"
+                        value={this.state.searchTerm}
+                        onChange={this.handleChange}
+                        type="text"
                     />
                 </div>
                 </form>

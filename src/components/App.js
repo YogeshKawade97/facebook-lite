@@ -4,6 +4,7 @@ import Navigation from './common/Navigation';
 import HomeComponent from './home/HomeComponent';
 import ProfileComponent from './profile/ProfileComponent';
 import AlbumSearch from './album/AlbumSearch';
+import AlbumDetails from './album/AlbumDetails';
 import Login from './auth/Login';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
           <Route path="/profile" component={ProfileComponent} />
           <Route exact path="/album" component={AlbumSearch} />
           <Route exact path="/login" component={Login} />
-          {/* <Route path="/album/:id" component={AlbumDetails} /> */}
+          <Route path="/album/:id" component={AlbumDetails} />
         </Switch>
       </BrowserRouter>  
     </div>

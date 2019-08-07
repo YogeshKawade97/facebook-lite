@@ -62,7 +62,7 @@ class Login extends Component {
                         appId="351079409153515"
                         autoLoad={true}
                         fields="name,email,picture"
-                        scope="public_profile,user_friends,user_actions.books"
+                        // scope="public_profile,user_friends,user_actions.books"
                         callback={this.responseFacebook} 
                     />                    
                 </div>
