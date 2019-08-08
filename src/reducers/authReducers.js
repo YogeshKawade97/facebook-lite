@@ -8,38 +8,51 @@ import {
 const initialState = {
     isLoggedIn: false,
     loginInProgress: false,
-    loginError: ''
+    loginError: '',
+    token: '',
+    user: ''
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_USER:
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         return Object.assign({}, state, {
           isLoggedIn: false,
           loginInProgress: true,
-          loginError: ''
+          loginError: '',
+          token: '',
+          user: ''
         });
       case LOGIN_FAILED:
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         return Object.assign({}, state, {
           isLoggedIn: false,
           loginInProgress: false,
-          loginError: 'Invalid Credentials'
+          loginError: 'Invalid Credentials',
+          token: '',
+          user: ''
         });
       case LOGIN_SUCCESS:
         localStorage.setItem('token', action.payload.token);
+        localStorage.setItem('user', action.payload.user);
         return Object.assign({}, state, {
           isLoggedIn: true,
           loginInProgress: false,
-          loginError: ''
+          loginError: '',
+          token: action.payload.token,
+          user: action.payload.user
         });
       case LOGOUT_USER:
         localStorage.clear();
         return Object.assign({}, state, {
           isLoggedIn: false,
           loginInProgress: false,
-          loginError: ''
+          loginError: '',
+          token: '',
+          user: ''
         });
       default:
         return state;

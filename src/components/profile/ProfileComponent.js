@@ -1,13 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-class ProfileComponent extends Component {
-    render() {
-        return (
-            <div>
-            This is Profile Component
-        </div>
-        );
-    }
+const ProfileComponent = ({ profileInfo }) => {
+    return (        
+        <table className="ui celled table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{profileInfo.name}</td>
+                    <td>{profileInfo.email}</td>
+                </tr>
+            </tbody>
+        </table>
+    );
 }
 
-export default ProfileComponent;
+
+// ProfileComponent.defaultProps = {
+//     profileInfo: 
+//       {
+//         name: 'Yogesh Kawade',
+//         email: 'test@test.com'
+//       }
+// };
+
+const mapStateToProps = state => {
+    return {
+      profileInfo: state.auth.user
+    };
+ };
+export default connect(mapStateToProps)(ProfileComponent);

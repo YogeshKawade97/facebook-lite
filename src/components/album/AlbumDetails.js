@@ -7,7 +7,6 @@ class AlbumDetails extends Component {
     };
 
     async componentDidMount() {
-        console.log(' componentDidMount ');
         const imageId = this.props.match.params.id;
         const response = await pexels.get(`/photos/${imageId}`);
         console.log(response);

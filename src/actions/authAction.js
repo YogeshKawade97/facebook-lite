@@ -6,11 +6,13 @@ import {
   } from './actionTypes';
 import { authenticateUser } from '../api/auth';
 
-export const loginSuccess = token => {
+export const loginSuccess = (response) => {
+    // var res = JSON.parse(response);
     return {
         type: LOGIN_SUCCESS,
         payload: {
-            token: token
+            token: response.token,
+            user: response.user
         }
     };
 };
@@ -30,7 +32,7 @@ const logoutUser = () => {
 export const LoginUser = (user, token, cb) => async dispatch => {
     dispatch(loginInProgress());
     try {
-      const response = await authenticateUser(user, token);
+      const response = await authenticateUser(user, token);      
       dispatch(loginSuccess(response));
       cb();
     } catch (err) {
