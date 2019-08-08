@@ -8,6 +8,7 @@ export default WrappedComponent => {
     render() {
       if (this.props.isLoggedIn) return <WrappedComponent {...this.props} />;
       else
+        alert('Oops! You have not logged in yet. Please login first.');
         return (
           <Redirect
             to={{
@@ -20,6 +21,7 @@ export default WrappedComponent => {
   }
 
   const mapStateToProps = ({ auth }) => {
+    console.log(auth);
     return {
       isLoggedIn: auth.isLoggedIn
     };

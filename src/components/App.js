@@ -7,6 +7,7 @@ import AlbumSearch from './album/AlbumSearch';
 import AlbumDetails from './album/AlbumDetails';
 import Login from './auth/Login';
 import withAuth from './withAuth'
+import Logout from './auth/Logout';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/profile" component={withAuth(ProfileComponent)} />
           <Route exact path="/album" component={withAuth(AlbumSearch)} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
           <Route path="/album/:id" component={withAuth(AlbumDetails)} />
         </Switch>
       </BrowserRouter>  

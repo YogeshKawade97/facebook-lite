@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { LogoutUser } from '../../actions/authActions';
+import { LogoutUser } from '../../actions/authAction';
 
 class Logout extends Component {
     componentDidMount() {

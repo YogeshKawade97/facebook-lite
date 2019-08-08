@@ -15,8 +15,8 @@ export const authenticateUser = (user, token) => {
 const authUserApi = (user, token) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-          console.log(user);
-        if (user.name === 'Yogesh Kawade') {
+        console.log(user);
+        if (user.name === 'Yogesh Kawade' || user.name === 'Michael Rosenthalson') {
           resolve(token);
         } else {
           reject('Login failed');

@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Login from '../auth/Login';
 
 const renderAuthLinks = isLoggedIn => {
     return isLoggedIn ? (
@@ -9,10 +8,9 @@ const renderAuthLinks = isLoggedIn => {
         LogOut
       </NavLink>
     ) : (
-    //   <NavLink className="item" to="/login">
-    //     Login
-    //   </NavLink>
-        <Login/>
+      <NavLink className="item" to="/login">
+        Login
+      </NavLink>
     );
   };
 
@@ -29,9 +27,6 @@ const Navigation = ({ isLoggedIn }) => {
             View Album
           </NavLink>
           <div className="right menu">
-            {/* <div className="item">
-                <Dashboard />
-            </div> */}
             <div className="ui item">{renderAuthLinks(isLoggedIn)}</div>
           </div>
         </div>
