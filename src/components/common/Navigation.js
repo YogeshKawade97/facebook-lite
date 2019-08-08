@@ -16,7 +16,7 @@ const renderAuthLinks = isLoggedIn => {
 
 const Navigation = ({ isLoggedIn }) => {
     return (
-        <div className="ui secondary  menu">
+      <div className="ui secondary pointing menu">
           <NavLink exact to="/" className="item">
             Home
           </NavLink>

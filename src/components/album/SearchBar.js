@@ -24,12 +24,17 @@ class SearchBar extends Component {
             <div className="ui form">
                 <form className="ui form" onSubmit={this.onSearchSubmitted}>
                 <div className="field">
-                    <label>Search: </label>
-                    <input
+                    { <label>Search: </label>
+                    /*<input
                         value={this.state.searchTerm}
                         onChange={this.handleChange}
                         type="text"
-                    />
+                    /> */}
+                    <div className="ui icon input">
+                        <input  value={this.state.searchTerm}
+                        onChange={this.handleChange} type="text" placeholder="Search..." />
+                        <i className="search icon"></i>
+                    </div>
                 </div>
                 </form>
             </div>
