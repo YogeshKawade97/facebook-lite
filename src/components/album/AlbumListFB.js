@@ -29,6 +29,9 @@ class AlbumListFB extends Component {
     //       )
     //   }
     
+// https://graph.facebook.com/me?fields=id,name,birthday&access_token=EAAMCI8BuacIBAM8ZBIcmCD3LiWZAZAuWpai8SGotuTV2BI7bhBRAdIuhJ2D11q1XrvrxIEmKQ8ZCT87XSME7Oyr5aWYWEi41cPTCkxIieJVBDJUG5ir0CgVcaQB7ngZBuGDMsY5CgCBKdHvJMrjQUNMPjX5DN8STlZC7OZAo2l2CBKtCPtLQfZCdmfgR9hUCkyJZAfHigWr7HbQZDZD
+// https://graph.facebook.com/me/albums?access_token=EAAMCI8BuacIBAAEbG8J1KP5Y0Lk5hL20fAux5dFenAaWqiq5PPG6DhSEOtzZCgoKZBvvUt0XoLq9rSZCok8bewLVg1ceG82bZCwoj0QVKoZBspqZBA4Cjh738GKZCFNBwhH3OBRtfxOz08EPRhthFT2pYURlkvkDiPcS85cJOeIQxJtgk6mZBrZBrHUiScRr3zXVlxDYsRbSKrNyZBrBfHI475
+// https://graph.facebook.com/107727780580608/picture?access_token=EAAMCI8BuacIBAAEbG8J1KP5Y0Lk5hL20fAux5dFenAaWqiq5PPG6DhSEOtzZCgoKZBvvUt0XoLq9rSZCok8bewLVg1ceG82bZCwoj0QVKoZBspqZBA4Cjh738GKZCFNBwhH3OBRtfxOz08EPRhthFT2pYURlkvkDiPcS85cJOeIQxJtgk6mZBrZBrHUiScRr3zXVlxDYsRbSKrNyZBrBfHI475
     async componentDidMount() {
         const response = await FBApi.get(`/me/albums/`);
         console.log(response);
