@@ -55,7 +55,7 @@ class Login extends Component {
             (
                 <div>                    
                     <FacebookLogin
-                        appId="351079409153515"
+                        appId="846777505704386" //351079409153515
                         autoLoad={false}
                         fields="name,email,picture"
                         // scope="public_profile,user_friends,user_actions.books"
