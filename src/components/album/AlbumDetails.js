@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import FBApi from '../../api/fbapi';
-// import { FB_TOKEN } from '../../config/config';
-
-const FB_TOKEN = localStorage.getItem('token') === "undefined" ? JSON.parse(localStorage.getItem('FBDATA')).token : localStorage.getItem('token');
+import { Carousel } from "react-responsive-carousel";
 
 class AlbumDetails extends Component {  
     state = {
@@ -24,15 +22,19 @@ class AlbumDetails extends Component {
       }
 
       render() {
-        return this.state.imageData.map(image => {
-          return (
-              <div key={image.id} className="ui card">
-                  <div className="image">
-                    <img width="1000" src={image.source} alt="something" />
-                  </div>                  
-              </div>
+        var photoDiv = this.state.imageData.map(image => {
+          return (              
+            <div className="image">
+              <img width="100" src={image.source} alt="something" />
+            </div>              
           )
         });
+
+        return (
+          <Carousel autoPlay>
+              {photoDiv}
+          </Carousel>
+        )
       }
 }
 

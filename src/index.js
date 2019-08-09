@@ -4,6 +4,7 @@ import App from './components/App';
 import configureStore from './store';
 import { Provider } from 'react-redux';
 import { loginSuccess } from './actions/authAction';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const token = localStorage.getItem('token');
 

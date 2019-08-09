@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FBApi from '../../api/fbapi';
-// import { FB_TOKEN } from '../../config/config';
 
-const FB_TOKEN = localStorage.getItem('token') === "undefined" ? JSON.parse(localStorage.getItem('FBDATA')).token : localStorage.getItem('token');
-console.log('FB_TOKEN > ',FB_TOKEN);
 class AlbumListFB extends Component {
 
     state = {
