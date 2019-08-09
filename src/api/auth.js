@@ -15,8 +15,9 @@ export const authenticateUser = (user, token) => {
 const authUserApi = (user, token) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        // console.log(user);
-        if (user.name === 'Yogesh Kawade' || user.name === 'Yogiraj Kawade' || user.name === 'Michael Rosenthalson') {
+        console.log(user);
+
+        if (user.name === 'Yogesh Kawade' || user.name === 'Adhiraj Kawade' || user.name === 'Michael Rosenthalson') {
           let dataStore = {
             'token': token,
             'user': user
