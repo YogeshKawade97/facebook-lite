@@ -21,6 +21,7 @@ class Login extends Component {
     };
 
     responseFacebook = (response) => {
+        console.log(response);
         // console.log(' RESPONSE FROM LOGIN > ');console.log(response);
         const queryParams = queryString.parse(this.props.location.search);
 

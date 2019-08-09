@@ -6,7 +6,8 @@ const FB_TOKEN = localStorage.getItem('token') === "undefined" ? JSON.parse(loca
 
 class AlbumDetails extends Component {  
     state = {
-        imageData: []
+        imageData: [],
+        FB_TOKEN: localStorage.getItem('token') === "undefined" ? JSON.parse(localStorage.getItem('FBDATA')).token : localStorage.getItem('token')
     };
 
     async componentDidMount() {
@@ -14,7 +15,7 @@ class AlbumDetails extends Component {
         const response = await FBApi.get(`/${imageId}/photos/`, {
           params: {
               fields: 'source,url,place',
-              access_token: FB_TOKEN
+              access_token: this.state.FB_TOKEN
           }
         });
         this.setState({

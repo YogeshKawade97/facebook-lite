@@ -8,13 +8,14 @@ console.log('FB_TOKEN > ',FB_TOKEN);
 class AlbumListFB extends Component {
 
     state = {
-        pictures: []
+        pictures: [],
+        FB_TOKEN: localStorage.getItem('token') === "undefined" ? JSON.parse(localStorage.getItem('FBDATA')).token : localStorage.getItem('token')
     };
     
     async componentDidMount() {
         const response = await FBApi.get('/me/albums/', {
             params: {
-                access_token: FB_TOKEN
+                access_token: this.state.FB_TOKEN
             }
         });
         // console.log('componentDidMount > ');console.log(response);
@@ -32,7 +33,7 @@ class AlbumListFB extends Component {
             return (
                 <div key={picture.id} className="ui card">
                     <div className="image">
-                        <img src={'https://graph.facebook.com/'+picture.id+'/picture?access_token='+FB_TOKEN} alt="something" />
+                        <img src={'https://graph.facebook.com/'+picture.id+'/picture?access_token='+this.state.FB_TOKEN} alt="something" />
                     </div>
                     <div className="extra content">
                         {picture.name}
