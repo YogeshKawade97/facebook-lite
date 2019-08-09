@@ -33,7 +33,7 @@ class AlbumListFB extends Component {
                         <img src={'https://graph.facebook.com/'+picture.id+'/picture?access_token='+this.state.FB_TOKEN} alt="something" />
                     </div>
                     <div className="extra content">
-                        {picture.name}
+                        <label className="ui red ribbon label"> <i className="hand point right icon"></i>{picture.name}</label>
                         <div className="ui buttons">
                             <div
                                 onClick={() => this.showImage(picture.id)}
