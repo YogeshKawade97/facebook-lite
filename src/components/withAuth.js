@@ -21,7 +21,6 @@ export default WrappedComponent => {
   }
 
   const mapStateToProps = ({ auth }) => {
-    console.log(auth);
     return {
       isLoggedIn: auth.isLoggedIn
     };

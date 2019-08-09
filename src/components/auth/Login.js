@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import FacebookLogin from 'react-facebook-login';
 import { LoginUser } from '../../actions/authAction';
+import { APP_ID } from '../../config/config';
 
 class Login extends Component {
 
@@ -20,7 +21,7 @@ class Login extends Component {
     };
 
     responseFacebook = (response) => {
-        console.log(this.props);
+        // console.log(' RESPONSE FROM LOGIN > ');console.log(response);
         const queryParams = queryString.parse(this.props.location.search);
 
         if(response.accessToken) {
@@ -55,10 +56,10 @@ class Login extends Component {
             (
                 <div>                    
                     <FacebookLogin
-                        appId="846777505704386" //351079409153515
+                        appId= {APP_ID} //351079409153515
                         autoLoad={false}
-                        fields="name,email,picture"
-                        // scope="public_profile,user_friends,user_actions.books"
+                        scope="public_profile,user_friends,user_photos"
+                        fields="name,email,picture"                        
                         callback={this.responseFacebook} 
                     />                    
                 </div>

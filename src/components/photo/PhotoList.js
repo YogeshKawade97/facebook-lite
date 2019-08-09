@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class AlbumList extends React.Component {
+class PhotoList extends React.Component {
     showImage = id => {
-        // console.log(' showImage '+id);
-        this.props.history.push(`/album/${id}`);
+        console.log(' showImage '+id);
+        this.props.history.push(`/photo/${id}`);
     };
 
     render() {
@@ -31,4 +31,4 @@ class AlbumList extends React.Component {
       }
 }
 
-export default withRouter(AlbumList);
+export default withRouter(PhotoList);

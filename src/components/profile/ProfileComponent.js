@@ -2,6 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const ProfileComponent = ({ profileInfo }) => {
+    var profileDataInfo = '';
+    if(profileInfo) {
+        profileDataInfo = profileInfo;
+    } else {
+        profileDataInfo = JSON.parse(localStorage.getItem('FBDATA')).user;
+    }
     return (        
         <table className="ui celled table">
             <thead>
@@ -12,22 +18,13 @@ const ProfileComponent = ({ profileInfo }) => {
             </thead>
             <tbody>
                 <tr>
-                    <td>{profileInfo.name}</td>
-                    <td>{profileInfo.email}</td>
+                    <td>{profileDataInfo.name}</td>
+                    <td>{profileDataInfo.email}</td>
                 </tr>
             </tbody>
         </table>
     );
 }
-
-
-// ProfileComponent.defaultProps = {
-//     profileInfo: 
-//       {
-//         name: 'Yogesh Kawade',
-//         email: 'test@test.com'
-//       }
-// };
 
 const mapStateToProps = state => {
     return {

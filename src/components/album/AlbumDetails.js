@@ -1,27 +1,38 @@
 import React, {Component} from 'react';
-import pexels from '../../api/pexel';
+import FBApi from '../../api/fbapi';
+// import { FB_TOKEN } from '../../config/config';
 
-class AlbumDetails extends Component {
+const FB_TOKEN = localStorage.getItem('token') === "undefined" ? JSON.parse(localStorage.getItem('FBDATA')).token : localStorage.getItem('token');
+
+class AlbumDetails extends Component {  
     state = {
-        imageUrl: null
+        imageData: []
     };
 
     async componentDidMount() {
-        const imageId = this.props.match.params.id;
-        const response = await pexels.get(`/photos/${imageId}`);
-        console.log(response);
+        const imageId = this.props.match.params.id;        
+        const response = await FBApi.get(`/${imageId}/photos/`, {
+          params: {
+              fields: 'source,url,place',
+              access_token: FB_TOKEN
+          }
+        });
         this.setState({
-          imageUrl: response.data.src.original
+          imageData: response.data.data
         });
       }
-      render() {
-        return this.state.imageUrl ? (
-          <img width="800" src={this.state.imageUrl} alt="something" />
-        ) : (
-          <div>Loading....</div>
-        );
-      }s
 
+      render() {
+        return this.state.imageData.map(image => {
+          return (
+              <div key={image.id} className="ui card">
+                  <div className="image">
+                    <img width="1000" src={image.source} alt="something" />
+                  </div>                  
+              </div>
+          )
+        });
+      }
 }
 
 export default AlbumDetails;

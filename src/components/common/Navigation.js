@@ -15,10 +15,13 @@ const renderAuthLinks = isLoggedIn => {
   };
 
 const Navigation = ({ isLoggedIn }) => {
-    return (
-      <div className="ui secondary pointing menu">
+    return isLoggedIn ? (
+        <div className="ui secondary pointing menu">
           <NavLink exact to="/" className="item">
             Home
+          </NavLink>
+          <NavLink to="/photo" className="item">
+            View Photo
           </NavLink>
           <NavLink to="/profile" className="item">
             View Profile
@@ -30,7 +33,19 @@ const Navigation = ({ isLoggedIn }) => {
             <div className="ui item">{renderAuthLinks(isLoggedIn)}</div>
           </div>
         </div>
-      );
+    ) : (
+        <div className="ui secondary pointing menu">
+          <NavLink exact to="/" className="item">
+            Home
+          </NavLink>
+          <NavLink to="/photo" className="item">
+            View Photo
+          </NavLink>
+          <div className="right menu">
+            <div className="ui item">{renderAuthLinks(isLoggedIn)}</div>
+          </div>
+        </div>
+    )    
 }
 
 const mapStateToProps = ({ auth }) => {

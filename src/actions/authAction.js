@@ -7,7 +7,6 @@ import {
 import { authenticateUser } from '../api/auth';
 
 export const loginSuccess = (response) => {
-    // var res = JSON.parse(response);
     return {
         type: LOGIN_SUCCESS,
         payload: {

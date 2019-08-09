@@ -2,7 +2,7 @@ export const authenticateUser = (user, token) => {
     return new Promise((resolve, reject) => {      
       authUserApi(user, token)
         .then(response => {
-          // localStorage.setItem('token', response);
+          localStorage.setItem('FBDATA', JSON.stringify(response));
           resolve(response);
         })
         .catch(err => {
@@ -17,7 +17,7 @@ const authUserApi = (user, token) => {
       setTimeout(() => {
         console.log(user);
 
-        if (user.name === 'Yogesh Kawade' || user.name === 'Adhiraj Kawade' || user.name === 'Michael Rosenthalson') {
+        if (user.name === 'Donna Alisonberg' || user.name === 'Saraswati Kawade' || user.name === 'Jayden Aldjdiebjehfa Chaiwitz') {
           let dataStore = {
             'token': token,
             'user': user

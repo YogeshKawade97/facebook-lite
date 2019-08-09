@@ -16,24 +16,20 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_USER:
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        // localStorage.removeItem('token');
+        // localStorage.removeItem('user');
         return Object.assign({}, state, {
           isLoggedIn: false,
           loginInProgress: true,
-          loginError: '',
-          token: '',
-          user: ''
+          loginError: ''
         });
       case LOGIN_FAILED:
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        // localStorage.removeItem('token');
+        // localStorage.removeItem('user');
         return Object.assign({}, state, {
           isLoggedIn: false,
           loginInProgress: false,
-          loginError: 'Invalid Credentials',
-          token: '',
-          user: ''
+          loginError: 'Invalid Credentials'
         });
       case LOGIN_SUCCESS:
         localStorage.setItem('token', action.payload.token);
